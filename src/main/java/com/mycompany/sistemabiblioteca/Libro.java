@@ -4,6 +4,7 @@
  */
 package com.mycompany.sistemabiblioteca;
 
+import static com.mycompany.sistemabiblioteca.SistemaBiblioteca.leerEntero;
 import java.util.ArrayList;
 import java.util.Scanner;
 

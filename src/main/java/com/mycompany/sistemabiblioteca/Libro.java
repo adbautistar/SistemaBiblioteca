@@ -66,13 +66,27 @@ public class Libro {
         int anio = leerEntero("Año   : ");
 
         if (buscarPorIsbn(isbn) != null) {
-            System.out.println("⚠ Ya existe un libro con ese ISBN.");
+            System.out.println(" Ya existe un libro con ese ISBN.");
             return;
         }
 
         libros.add(new Libro(isbn, titulo, autor, genero, anio));
-        System.out.println("✔ Libro registrado.");
+        System.out.println(" Libro registrado.");
     }
 
+    static void listarLibros() {
+        if (libros.isEmpty()) {
+            System.out.println(" No hay libros registrados.");
+            return;
+        }
+        for (Libro libro : libros)
+            System.out.println(libro);
+    }
+
+    static Libro buscarPorIsbn(String isbn) {
+        for (Libro libro : libros)
+            if (libro.getIsbn().equalsIgnoreCase(isbn)) return libro;
+        return null;
+    }
 
 }

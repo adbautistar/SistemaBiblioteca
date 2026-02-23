@@ -105,4 +105,17 @@ public class Libro {
         System.out.println(" Libro actualizado.");
     }
 
+    static void eliminarLibro() {
+        System.out.print("ISBN a eliminar: ");
+        Libro libro = buscarPorIsbn(scanner.nextLine());
+        if (libro == null) { System.out.println("✘ No encontrado."); return; }
+
+        System.out.print("¿Confirmar eliminación de \"" + libro.getTitulo() + "\"? (s/n): ");
+        if (scanner.nextLine().equalsIgnoreCase("s")) {
+            libros.remove(libro);
+            System.out.println("✔ Libro eliminado.");
+        }
+    }
+    
+    
 }

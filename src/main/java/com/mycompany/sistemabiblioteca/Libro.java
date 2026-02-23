@@ -89,4 +89,20 @@ public class Libro {
         return null;
     }
 
+    static void actualizarLibro() {
+        System.out.print("ISBN a actualizar: ");
+        Libro libro = buscarPorIsbn(scanner.nextLine());
+        if (libro == null) { System.out.println(" No encontrado."); return; }
+
+        System.out.print("Nuevo título [" + libro.getTitulo() + "]: ");
+        String titulo = scanner.nextLine();
+        if (!titulo.isBlank()) libro.setTitulo(titulo);
+
+        System.out.print("Nuevo autor [" + libro.getAutor() + "]: ");
+        String autor = scanner.nextLine();
+        if (!autor.isBlank()) libro.setAutor(autor);
+
+        System.out.println(" Libro actualizado.");
+    }
+
 }

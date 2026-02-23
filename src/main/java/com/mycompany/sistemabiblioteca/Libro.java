@@ -43,6 +43,12 @@ public class Libro {
     public void setAnioPublicacion(int anioPublicacion)  { this.anioPublicacion = anioPublicacion; }
     public void setDisponible(boolean disponible)        { this.disponible = disponible; }
         
-    
+    @Override
+public String toString() {
+    return "ISBN: " + isbn
+         + " | Título: "  + titulo
+         + " | Autor: "   + autor
+         + " | Estado: "  + (disponible ? "Disponible" : "Prestado");
+}
     
 }

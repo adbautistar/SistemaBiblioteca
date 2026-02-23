@@ -4,12 +4,15 @@
  */
 package com.mycompany.sistemabiblioteca;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author ALFREDOBAUTISTAROMER
  */
 public class Libro {
-    
+      
     //atributos
     private String isbn;
     private String titulo;
@@ -17,6 +20,9 @@ public class Libro {
     private String genero;
     private int anioPublicacion;
     private boolean disponible;
+    
+    static ArrayList<Libro> libros  = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
     
     //Constructor 
     public Libro(String isbn, String titulo, String autor,String genero, int anioPublicacion) {
@@ -44,11 +50,29 @@ public class Libro {
     public void setDisponible(boolean disponible)        { this.disponible = disponible; }
         
     @Override
-public String toString() {
-    return "ISBN: " + isbn
-         + " | Título: "  + titulo
-         + " | Autor: "   + autor
-         + " | Estado: "  + (disponible ? "Disponible" : "Prestado");
-}
+    public String toString() {
+        return "ISBN: " + isbn
+             + " | Título: "  + titulo
+             + " | Autor: "   + autor
+             + " | Estado: "  + (disponible ? "Disponible" : "Prestado");
+    }
     
+    
+    static void registrarLibro() {
+        System.out.print("ISBN   : "); String isbn   = scanner.nextLine();
+        System.out.print("Título : "); String titulo = scanner.nextLine();
+        System.out.print("Autor  : "); String autor  = scanner.nextLine();
+        System.out.print("Género : "); String genero = scanner.nextLine();
+        int anio = leerEntero("Año   : ");
+
+        if (buscarPorIsbn(isbn) != null) {
+            System.out.println("⚠ Ya existe un libro con ese ISBN.");
+            return;
+        }
+
+        libros.add(new Libro(isbn, titulo, autor, genero, anio));
+        System.out.println("✔ Libro registrado.");
+    }
+
+
 }
